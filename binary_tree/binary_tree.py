@@ -32,14 +32,23 @@ class BinaryTree:
         traverse(self.root, return_list)
         return return_list
 
-    def max_depth(self) -> int | None:
-        def answer(root: TreeNode) -> int:
+    def max_depth(self) -> int:
+        def answer(root: Optional[TreeNode]) -> int:
             if root is None:
                 return 0
             ldepth = answer(root.left)
             rdepth = answer(root.right)
-            if ldepth > rdepth:
-                return ldepth + 1
-            else:
-                return rdepth + 1
+            return max(ldepth, rdepth) + 1
         return answer(self.root)
+
+    def is_symmetric(self) -> bool:
+        def compare(left: Optional[TreeNode], right: Optional[TreeNode]) -> bool:
+            if left is None and right is None:
+                return True
+            if left is None or right is None:
+                return False
+            if left.val != right.val:
+                return False
+            return compare(left.left, right.right) and compare(left.right, right.left)
+        return compare(self.root.left, self.root.right)
+

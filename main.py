@@ -19,3 +19,10 @@ print(', '.join(str(n) for n in levelorder))
 
 maxdepth = btree.max_depth()
 print(f'Max Depth: {maxdepth}')
+
+symmetric = btree.is_symmetric()
+print(f'Is Symmetric: {symmetric}')
+
+btree = BinaryTree.from_array([1, 2, 2, 3, 4, 4, 3])
+symmetric = btree.is_symmetric()
+print(f'Is Symmetric: {symmetric}')
