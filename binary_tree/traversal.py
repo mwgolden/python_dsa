@@ -66,6 +66,12 @@ def iterative_preorder(root: TreeNode, return_list) -> List:
 
 
 def morris_preorder(root: TreeNode, return_list: List) -> List:
+    """
+    A preorder traversal that takes O(n) space
+    :param root:
+    :param return_list:
+    :return: List
+    """
     current_node = root
     while current_node:
         # if there is no left child, go for the right child
