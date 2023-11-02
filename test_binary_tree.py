@@ -1,23 +1,15 @@
-from binary_tree.tree_node import TreeNode
+import unittest
 from binary_tree.binary_tree import BinaryTree
-import binary_tree.traversal as traversal
-
-tree = TreeNode("F",
-                TreeNode("B",
-                         TreeNode("A"),
-                         TreeNode("D")),
-                TreeNode("G",
-                            None,
-                            TreeNode("I",
-                                TreeNode("H"))))
+from binary_tree.utils import count_univalue_subtrees
 
 
-btree = BinaryTree(tree)
+class TestBinaryTreeMethods(unittest.TestCase):
+    def test_count_univalue_subtrees(self):
+        t = [5, 1, 5, 5, 5, None, 5]
+        tree = BinaryTree.from_array(t)
+        count = count_univalue_subtrees(tree.root)
+        self.assertEqual(count, 4)  # add assertion here
 
 
-def test_preorder_traversal():
-    result = btree.traverse_tree(traversal.preorder)
-    print(" ,".join(result))
-    assert result == ["F", "B", "A", "D", "G", "I", "H"]
-
-
+if __name__ == '__main__':
+    unittest.main()
